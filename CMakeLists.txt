@@ -31,6 +31,8 @@ else (CMAKE_BUILD_TYPE STREQUAL "Debug")
     message("====== Building without coverage flags")
 endif (ENABLE_TEST_COVERAGE AND CMAKE_BUILD_TYPE STREQUAL "Debug")
 
+add_subdirectory(Externals)
+
 add_library(
     TinyProtocol
 )
@@ -39,6 +41,12 @@ target_sources(
     TinyProtocol
     PRIVATE
         Src/TinyProtocol.c
+)
+
+target_link_libraries(
+    TinyProtocol
+    PUBLIC
+        CircularBuffer
 )
 
 target_include_directories(

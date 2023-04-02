@@ -1,0 +1,3 @@
+[submodule "Externals/libCircularBuffer"]
+	path = Externals/libCircularBuffer
+	url = git@github.com:dogukanarat/libCircularBuffer

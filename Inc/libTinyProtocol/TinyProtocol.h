@@ -2,6 +2,8 @@
 #define INCLUDED_LIBTINYPROTOCOL_H
 
 #include <stdint.h>
+#include "libCircularBuffer/CircularBuffer.h"
+#include "libCircularBuffer/CircularBufferExt.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -19,12 +21,13 @@ extern "C" {
 #define FALSE 0
 #endif
 
-#define LIBTP_HEADER_SYNC             (uint16_t)(0xF00F)
-#define LIBTP_MAX_CALLBACK_COUNT      256
-
 #define LIBTP_SUCCESS                  0
 #define LIBTP_INVALIDPARAM             -1
 #define LIBTP_CALLBACKFULL             -2
+
+#define LIBTP_HEADER_SYNC             (uint16_t)(0xF00F)
+#define LIBTP_MAX_CALLBACK_COUNT      256
+#define LIBTP_INCOMING_BUFFER_SIZE    1024
 
 #define LIBTP_NODATA                   uint8_t noData[0]
 
@@ -65,6 +68,7 @@ typedef struct _TinyProtocol
 {
     TinyProtocolInit init;
     TinyProtocolCallbackItem pCallbackMap[LIBTP_MAX_CALLBACK_COUNT];
+    CircularBuffer incomingBuffer;
     uint32_t nCallbackCount;
 } TinyProtocol;
 

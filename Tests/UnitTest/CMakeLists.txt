@@ -16,19 +16,19 @@ FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 
 add_executable(
-    UnitTest
+    LibTinyProtocolUnitTest
     Main.cpp
 )
 
-target_compile_definitions(UnitTest PUBLIC CTEST)
+target_compile_definitions(LibTinyProtocolUnitTest PUBLIC CTEST)
 
 target_link_libraries(
-    UnitTest
+    LibTinyProtocolUnitTest
       gtest_main
       TinyProtocol
 )
 
-gtest_discover_tests(UnitTest
+gtest_discover_tests(LibTinyProtocolUnitTest
     PROPERTIES
         LABELS "unit"
     DISCOVERY_TIMEOUT  # how long to wait (in seconds) before crashing
